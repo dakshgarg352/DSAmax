@@ -5,11 +5,10 @@ class Solution:
                 for j in range(9):
                     if board[j][i] != ".":
                         cell = int(board[j][i]) - 1
+                        if 1 in (nb[i + cell*27] , nb[(j+9) + cell*27] , nb[j//3*3+i//3+18 + cell*27]):
+                            return False
                         nb[i + cell*27] += 1
                         nb[(j+9) + cell*27] += 1
                         nb[j//3*3+i//3+18 + cell*27] += 1
                         
-            s = set(nb) 
-            if s == {0,1} or s == {0}:
-                return True
-            return False
+            return True
